@@ -20,6 +20,7 @@ gem 'puma', '~> 5.0'
 gem 'devise'
 
 # Use JWT tokens for authentication in api
+gem 'devise-jwt'
 
 gem 'dotenv-rails'
 
@@ -31,7 +32,10 @@ gem 'faker'
 # Reduces boot times through caching; required in config/boot.rb
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
+
+# JSON serialization
+gem 'jsonapi-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -42,6 +46,13 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'jsonapi-rspec'
+  gem 'faker'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -17,7 +17,6 @@ class ArticlesController < ApplicationController
   # POST /articles
   def create
     @article = Article.new(article_params)
-    @article.user = User.find(params[:user])
 
     if @article.save
       render json: @article, status: :created, location: @article
@@ -48,6 +47,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :content, :user)
+      params.require(:article).permit(:title, :content, :token)
     end
 end
