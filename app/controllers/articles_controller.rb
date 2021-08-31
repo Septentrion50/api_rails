@@ -59,7 +59,7 @@ class ArticlesController < ApplicationController
     def creator?
       @article = Article.find(params[:id])
       unless @article.user == current_user
-        render json: @article.errors, status: :unprocessable_entity
+        render json: @article.errors, status: :unauthorized
       end
     end
 end
