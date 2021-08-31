@@ -20,7 +20,6 @@ gem 'puma', '~> 5.0'
 gem 'devise'
 
 # Use JWT tokens for authentication in api
-gem 'devise-jwt'
 
 gem 'dotenv-rails'
 
