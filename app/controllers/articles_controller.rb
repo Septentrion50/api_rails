@@ -5,14 +5,18 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    @articles = Article.all
+    @articles = Article.all.where(status: false)
 
     render json: @articles
   end
 
   # GET /articles/1
   def show
-    render json: @article
+    if @article.status == false || @article.user == current_user
+      render json: @article
+    else
+      render json: @article.errors ,status: :forbidden
+    end
   end
 
   # POST /articles
@@ -49,7 +53,7 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :content)
+      params.require(:article).permit(:title, :content, :status)
     end
 
     def creator?
