@@ -16,8 +16,15 @@ gem 'puma', '~> 5.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Use devise to create users
+gem 'devise'
+
 # Use JWT tokens for authentication in api
 gem 'devise-jwt'
+
+gem 'dotenv-rails'
+
+gem 'faker'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
