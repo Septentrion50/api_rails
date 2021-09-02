@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index]
   before_action :creator?, only: [:update, :destroy]
 
   # GET /articles
@@ -13,7 +13,11 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   def show
     if @article.status == false || @article.user == current_user
-      render json: @article
+      if @article.image.attached?
+      render json: @article.as_json().merge(image_path: @article.get_image_url())
+      else
+        render json: @article
+      end
     else
       render json: @article.errors ,status: :forbidden
     end
