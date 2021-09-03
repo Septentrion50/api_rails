@@ -8,10 +8,14 @@
 
 require 'faker'
 
+User.destroy_all
+Article.destroy_all
+
 10.times do
   User.create(email: Faker::Internet.email, password: Faker::Internet.password)
 end
 
 30.times do
-  Article.create(title: Faker::Tea.variety, content: Faker::Lorem.paragraph_by_chars(number: 256), user: User.all.sample())
+  a = Article.create(title: Faker::Tea.variety, content: Faker::Lorem.paragraph_by_chars(number: 256), user: User.all.sample())
+  a.image.attach(io: File.open('/home/septentrion/Images/Test/real_estate_test5.jpeg'), filename: 'poster.jpeg')
 end
