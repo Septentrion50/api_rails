@@ -6,7 +6,17 @@ class Api::UsersController < Api::BaseController
     render_jsonapi_response(@user)
   end
 
+  def update
+    @user = find_user()
+    @user.update(user_params)
+    render_jsonapi_response(@user)
+  end
+
   private
+
+  def user_params
+    params.require(:user).permit(:username, :firstname, :lastname)
+  end
 
   def find_user
     @user = User.find(params[:id])

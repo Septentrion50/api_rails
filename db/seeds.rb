@@ -12,7 +12,7 @@ User.destroy_all
 Article.destroy_all
 
 10.times do
-  User.create(email: Faker::Internet.email, password: Faker::Internet.password)
+  User.create(email: Faker::Internet.email, password: Faker::Internet.password, username: Faker::Internet.username, firstname: Faker::Name.first_name, lastname: Faker::Name.last_name)
 end
 
 30.times do
