@@ -19,3 +19,7 @@ end
   a = Article.create(title: Faker::Tea.variety, content: Faker::Lorem.paragraph_by_chars(number: 256), user: User.all.sample())
   a.image.attach(io: File.open('/home/septentrion/Images/Test/real_estate_test5.jpeg'), filename: 'poster.jpeg')
 end
+
+60.times do
+  c = Comment.create(user: User.all.sample(), article: Article.all.sample(), content: Faker::Lorem.paragraph_by_chars(number: 256))
+end

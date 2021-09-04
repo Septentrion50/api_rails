@@ -6,6 +6,9 @@ class ArticlesController < ApplicationController
   # GET /articles
   def index
     @articles = Article.all.where(status: false)
+    @articles.each_with_index { |a, index|
+      a.image_path = @articles[index].get_image_url()
+    }
 
     render json: @articles
   end
